@@ -4,6 +4,7 @@ import com.prasad.ordermanagementsystem.entity.Order;
 import com.prasad.ordermanagementsystem.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -16,11 +17,19 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
+
+    @PostMapping("/orders")
+    public Order createOrder(@Valid @RequestBody Order order) {
+        return orderService.createOrder(order);
+    }
+    /*public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
     @PostMapping("/orders")
     public Order createOrder(@RequestBody Order order)
     {
         return orderService.createOrder(order);
-    }
+    }*/
     @GetMapping("/orders")
     public List<Order> getAllOrders()
     {
@@ -35,10 +44,16 @@ public class OrderController {
    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
        return ResponseEntity.ok(orderService.getOrderById(id));
    }
-
+/*
     @PutMapping("/orders/{id}")
     public Order updateOrder(@PathVariable Long id,@RequestBody Order order)
     {
+    return orderService.updateOrder(id, order);
+    }*/
+    @PutMapping("/orders/{id}")
+    public Order updateOrder(
+        @PathVariable Long id,
+        @Valid @RequestBody Order order) {
     return orderService.updateOrder(id, order);
     }
     @DeleteMapping("/orders/{id}")
