@@ -3,14 +3,10 @@ import com.prasad.ordermanagementsystem.OrderNotFoundException;
 import com.prasad.ordermanagementsystem.entity.Order;
 import com.prasad.ordermanagementsystem.repository.OrderRepository;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 
 @Service
 public class OrderService {
-
-
     private final OrderRepository orderRepository;
 
     public OrderService(OrderRepository orderRepository) {

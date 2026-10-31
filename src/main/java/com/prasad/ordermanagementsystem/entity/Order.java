@@ -33,9 +33,6 @@ public class Order {
             message = "Status must be CREATED, PROCESSING, SHIPPED, DELIVERED, or CANCELLED"
     )
     private String Status;
-
-
-
     /*private String customerName;
     private String productName;
     private Double amount;
